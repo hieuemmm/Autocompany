@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<object type="TAForm" name="FormMain">
+	<properties>
+		<property name="Left" vt="Int16">192</property>
+		<property name="Top" vt="Int8">124</property>
+		<property name="Width" vt="Int16">585</property>
+		<property name="Height" vt="Int16">500</property>
+		<property name="Caption" vt="String">AutoCompany</property>
+		<property name="Color" vt="Ident">clBtnHighlight</property>
+		<property name="Font.Charset" vt="Ident">DEFAULT_CHARSET</property>
+		<property name="Font.Color" vt="Ident">clWindowText</property>
+		<property name="Font.Height" vt="Int8">-11</property>
+		<property name="Font.Name" vt="String">MS Sans Serif</property>
+		<property name="Font.Style" vt="Set"/>
+		<property name="Icon.Data" vt="Binary">
+			<bin>0000010001003030000001000800A80E00001600000028000000300000006000</bin>
+			<bin>000001000800000000000009000000000000000000000001000000010000FFFF</bin>
+			<bin>FF00F5F5F500FDFDFD00FEFEFD00F6E6B400EFD47C00EAC55100E6BA2E00E4B3</bin>
+			<bin>1B00E3B01000E3B01100E4B41E00E7BB3300EBC85900F1D78600F7EAC100F1D9</bin>
+			<bin>8E00E5B52200DFA50000E0A90000E1AB0300E2AD0800E2AE0C00E2AF0E00E2AF</bin>
+			<bin>0F00E2AE0B00E2AD0700E1AB0200DFA60000E7BC3500F4E1A600FFFFFE00ECCA</bin>
+			<bin>6000E1AA0000E2AE0A00E3AF0F00F0D58100EFD47D00FCF8EB00E3B01200E2AF</bin>
+			<bin>0D00E0A70000E7BC3300F5E5B200E1AC0500FBF5E100F1D98D00F8EDC900DFA4</bin>
+			<bin>0000F9EDCC00FCF7E900E9C24700E3B00F00E2AD0900E1AC0600F7EAC000FEFE</bin>
+			<bin>FE00DFA70000ECC95D00EBC85A00E9C24900F4E0A100ECCB6200F1D98F00F3DF</bin>
+			<bin>9E00E5B62500F9EECE00E5B52100F3DE9C00F4E0A200EFD37A00EFD47F00EED1</bin>
+			<bin>7400E5B62400E1AC0400ECCA6100E9C24800E0A80000E1AB0100DEA40000F8EC</bin>
+			<bin>C500EAC55200FCF9ED00E0AA0000F7E9BE00FCF6E500FBF5E200F9EECD00FAF2</bin>
+			<bin>D900E2AC0500E0AB0000F0D68400ECCB6400E4B52000E2AF0C00E5B62300E4B4</bin>
+			<bin>1F00E3B11600EAC55000E2AF1000FAF2D700E6B72800E9C24600FEFDF800E2AC</bin>
+			<bin>0600E0AB0100E9C34A00E5B82800E3B11200FEFCF800EBC65300ECC95E00EBC9</bin>
+			<bin>5E00EDCD6900E5B72600EBC95D00F2DA8E00F1D78700E3B21600ECCC6600DEA3</bin>
+			<bin>0000F7E8BD00F8EAC100F9EFCF00F9EFCE00EFD37900DC9D0000EBC85B00ECCA</bin>
+			<bin>5F00FEFDFA00EFD37B00E5B72500E3B21500EED07300F3DF9F00F0D58200F2DC</bin>
+			<bin>9800FCF6E600EECF7000EFD27600F0D47F00F0D68300E7BD3900FCF8ED00F2DC</bin>
+			<bin>9600E6B92B00F0D58000F2D98E00DA980000F2DB9300F8EAC200EAC54F00EED1</bin>
+			<bin>7500EED07200E4B41D00E2B01000EAC44D00E6B82800F4E1A700E1AD0700E3B2</bin>
+			<bin>1800F6E6B300FBF6E500E7BB3400E6B82B00FEFCF700F9EECC00E1AB0400FCF8</bin>
+			<bin>E900E5B72700F8EBC200EED17300F6E5B200F0D78700EBC65400F1DA8F00F7E9</bin>
+			<bin>BC00000000000000000000000000000000000000000000000000000000000000</bin>
+			<bin>0000000000000000000000000000000000000000000000000000000000000000</bin>
+			<bin>0000000000000000000000000000000000000000000000000000000000000000</bin>
+			<bin>0000000000000000000000000000000000000000000000000000000000000000</bin>
+			<bin>0000000000000000000000000000000000000000000000000000000000000000</bin>
+			<bin>0000000000000000000000000000000000000000000000000000000000000000</bin>
+			<bin>0000000000000000000000000000000000000000000000000000000000000000</bin>
+			<bin>0000000000000000000000000000000000000000000000000000000000000000</bin>
+			<bin>0000000000000000000000000000000000000000000000000000000000000000</bin>
+			<bin>0000000000000000000000000000000000000000000000000000000000000000</bin>
+			<bin>0000000000000000000000000000000052ACAD5C626633AE71AFB08100000000</bin>
+			<bin>0000000000000000000000000000000000000000000000000000000000424B4A</bin>
+			<bin>39131B36153535152C4E131C84AB890000000000000000000000000000000000</bin>
+			<bin>00000000000000000000003D6C394A28090909090909090909090909191B12A4</bin>
+			<bin>AA000000000000000000000000000000000000000000000000375E4D19090909</bin>
+			<bin>0909090909090909090909090909093539A9A200000000000000000000000000</bin>
+			<bin>0000000000000000331C16090909090909090909090909090909090909090909</bin>
+			<bin>09351248000000000000000000000000000000000000A82C1409090909090909</bin>
+			<bin>09090909090909090909090909090909090918135F0000000000000000000000</bin>
+			<bin>0000000000A61C19090909090909090909090909090909090909090909090909</bin>
+			<bin>0909090936A7A5000000000000000000000000002F3017090909090909090909</bin>
+			<bin>0909090909090909090909090909090909090909092213A50000000000000000</bin>
+			<bin>0000002D12170909090909090909090909090909090909090909090909090909</bin>
+			<bin>090909090909224A000000000000000000000021160909090909090909090909</bin>
+			<bin>0909090909090918192309090909090909090909090909365F00000000000000</bin>
+			<bin>0000A32C0909090909090909090909090909090909091816A41C531A34090909</bin>
+			<bin>09090909090909091348000000000000009E290909090909090909189F141414</bin>
+			<bin>14141414141435A00000A1334D34090909090909090909091812A20000000000</bin>
+			<bin>005328090909090909091739979899999999999999829A12009B9C0090123409</bin>
+			<bin>090909090909090909359D000000000092210909090909090918292D00000000</bin>
+			<bin>000000000000931C1E7394520095122309090909090909090909399600000000</bin>
+			<bin>1317090909090909094A8A00568B478C8C8C8C8C8C8D71218E008F0000009012</bin>
+			<bin>2309090909090909090935910000001E1309090909090909092186004C294E4E</bin>
+			<bin>4E4E4E4E4E4E360913870000000000883923090909090909090909128900001D</bin>
+			<bin>150909090909090909214400063609090909090909090909091C050000000000</bin>
+			<bin>46210909090909090909091B8500001C18090909090909090921440051360913</bin>
+			<bin>4D17174D4D4D4D4D4D1312820000005778832109090909090909091984007A13</bin>
+			<bin>09090909090909090921440051361354551A4A56575757577B7C4E127D007C7E</bin>
+			<bin>7F00804A09090909090909091C81751B09090909090909090921440051362900</bin>
+			<bin>00595A0000000000000000763977780D00000039090909090909090913790D1A</bin>
+			<bin>0909090909090909092144005136165D495E165F6060606060607249281B5F00</bin>
+			<bin>0000734A09090909090909094E740C190909090909090909092144005136091C</bin>
+			<bin>1228171212121212121212121409216F00704D0909090909090909092C710B17</bin>
+			<bin>09090909090909090921440051364D6D00686900000000000000000005140913</bin>
+			<bin>121409090909090909090909156E0A1809090909090909090921440051364D67</bin>
+			<bin>0068690000000000000000000514156A6B6C1709090909090909090935336323</bin>
+			<bin>0909090909090909092144005136091C1228171212121212121212124E094D64</bin>
+			<bin>006522090909090909090909356608170909090909090909092144005136165D</bin>
+			<bin>495E165F606060606060604361174D2F00491909090909090909090915620716</bin>
+			<bin>0909090909090909092144005136290000595A0000000000000000005B1B4D2F</bin>
+			<bin>004919090909090909090909365C061509090909090909090921440051361354</bin>
+			<bin>551A4A56575757575757575820364D2F0049190909090909090909091B0E0514</bin>
+			<bin>090909090909090909214400513609134D17174D4D4D4D4D4D4D4D4D36094D2F</bin>
+			<bin>004919090909090909090909532B041309090909090909090921440051360909</bin>
+			<bin>09090909090909090909090909094D2F0049190909090909090909093952031C</bin>
+			<bin>2309090909090909092144004C4D4E4E4E4E4E4E4E4E4E4E4E4E4E4E4E4E4F50</bin>
+			<bin>0049190909090909090909284A00004322090909090909090921440045464747</bin>
+			<bin>4747474747474747474747474747482D00491909090909090909094A4B00003F</bin>
+			<bin>2109090909090909092140000000000000000000000000000000000000000000</bin>
+			<bin>004119090909090909090939420000001C18090909090909092C3E0000000000</bin>
+			<bin>0000000000000000000000000000000000131809090909090909192700000000</bin>
+			<bin>20140909090909090918390F0000000000000000000000000000000000000000</bin>
+			<bin>3C2C0909090909090909133D00000000381C180909090909090918390C3A3B3B</bin>
+			<bin>3B3B3B3B3B3B3B3B3B3B3B3B3B3B3B2214090909090909090916160000000000</bin>
+			<bin>002513090909090909090934352C2C2C2C2C2C2C2C2C2C2C2C2C2C2C2C2C3628</bin>
+			<bin>0909090909090909091C37000000000000002722090909090909090909090909</bin>
+			<bin>0909090909090909090909090909090909090909090909091433000000000000</bin>
+			<bin>0000261217090909090909090909090909090909090909090909090909090909</bin>
+			<bin>09090909090909192C000000000000000000002B121809090909090909090909</bin>
+			<bin>09090909090909090909090909090909090909090909171C3200000000000000</bin>
+			<bin>000000002E121809090909090909090909090909090909090909090909090909</bin>
+			<bin>0909090909173031000000000000000000000000002E12170909090909090909</bin>
+			<bin>090909090909090909090909090909090909090916122F000000000000000000</bin>
+			<bin>0000000000002B12220909090909090909090909090909090909090909090909</bin>
+			<bin>0909092C212D0000000000000000000000000000000000262713180909090909</bin>
+			<bin>090909090909090909090909090909090928292A000000000000000000000000</bin>
+			<bin>000000000000000000251C141809090909090909090909090909090909090917</bin>
+			<bin>21131E00000000000000000000000000000000000000000000001F201C212223</bin>
+			<bin>0909090909090909090909091815131324000000000000000000000000000000</bin>
+			<bin>000000000000000000000000001011121314151617181817191A1B131C1D1E00</bin>
+			<bin>0000000000000000000000000000000000000102000000000000000000000003</bin>
+			<bin>0405060708090A0B0C0D0E0F0000000000000000000000000000000000000000</bin>
+			<bin>0000000000000000000000000000000000000000000000000000000000000000</bin>
+			<bin>0000000000000000000000000000000000000000000000000000000000000000</bin>
+			<bin>0000000000000000000000000000000000000000000000000000000000000000</bin>
+			<bin>0000000000000000000000000000000000000000000000000000000000000000</bin>
+			<bin>0000000000000000000000000000000000000000000000000000000000000000</bin>
+			<bin>0000000000000000000000000000000000000000000000000000000000000000</bin>
+			<bin>0000000000000000000000000000000000000000000000000000000000000000</bin>
+			<bin>0000000000000000000000000000000000000000000000000000000000000000</bin>
+			<bin>0000000000000000000000000000000000000000000000000000000000000000</bin>
+			<bin>0000000000000000000000000000000000000000000000000000000000000000</bin>
+			<bin>0000000000000000000000000000000000000000000000000000000000000000</bin>
+			<bin>000000000000000000000000000000000000000000000000000000000000</bin>
+		</property>
+		<property name="OldCreateOrder" vt="False">False</property>
+		<property name="Visible" vt="True">True</property>
+		<property name="PicturePath" vt="String">C:\Users\ADMIN\Desktop\Tools\Image\icon.ico</property>
+		<property name="Style" vt="Int32">-1798701056</property>
+		<property name="ExStyle" vt="Int16">256</property>
+		<property name="Version" vt="String">1.04</property>
+		<property name="FormOptOnEvent" vt="False">False</property>
+		<property name="FormOptExpVars" vt="False">False</property>
+		<property name="FormOptPopulate" vt="False">False</property>
+		<property name="FormOptVarsForSet" vt="False">False</property>
+		<property name="FormOptIndentChar" vt="Int8">0</property>
+		<property name="FormOptIndentCount" vt="Int8">1</property>
+		<property name="FormOptIndentInit" vt="Int8">0</property>
+		<property name="FormOptVarScope" vt="Int8">0</property>
+		<property name="Resizing" vt="Set"/>
+		<property name="PixelsPerInch" vt="Int8">96</property>
+		<property name="TextHeight" vt="Int8">13</property>
+	</properties>
+	<components>
+		<object type="TAListView" name="ListView">
+			<properties>
+				<property name="Left" vt="Int8">0</property>
+				<property name="Top" vt="Int8">0</property>
+				<property name="Width" vt="Int16">154</property>
+				<property name="Height" vt="Int16">435</property>
+				<property name="CtrlStyle" vt="Int32">1342373901</property>
+				<property name="CtrlExStyle" vt="Int16">512</property>
+				<property name="Resizing" vt="Set"/>
+				<property name="Items.Data" vt="Binary">
+					<bin>5B00000001000000FFFFFFFFFFFFFFFFFFFFFFFF00000000000000003E446F61</bin>
+					<bin>6E68206E6768693F7020743F692058E32056696E6820536F6E2C204875793F6E</bin>
+					<bin>2056696E682054683F6E682C20543F6E682042EC6E6820D03F6E68</bin>
+				</property>
+				<property name="Columns" vt="Collection">
+					<collection/>
+				</property>
+			</properties>
+			<components/>
+		</object>
+		<object type="TAEdit" name="Edit">
+			<properties>
+				<property name="Left" vt="Int16">155</property>
+				<property name="Top" vt="Int8">0</property>
+				<property name="Width" vt="Int16">156</property>
+				<property name="Height" vt="Int16">435</property>
+				<property name="TabOrder" vt="Int8">1</property>
+				<property name="CtrlStyle" vt="Int32">1350766788</property>
+				<property name="CtrlExStyle" vt="Int8">0</property>
+				<property name="Resizing" vt="Set"/>
+			</properties>
+			<components/>
+		</object>
+		<object type="TAInput" name="InputDaTa">
+			<properties>
+				<property name="Left" vt="Int16">312</property>
+				<property name="Top" vt="Int8">2</property>
+				<property name="Width" vt="Int8">124</property>
+				<property name="Height" vt="Int8">24</property>
+				<property name="Font.Charset" vt="Ident">ANSI_CHARSET</property>
+				<property name="Font.Color" vt="Ident">clWindowText</property>
+				<property name="Font.Height" vt="Int8">-13</property>
+				<property name="Font.Name" vt="String">Tahoma</property>
+				<property name="Font.Style" vt="Set"/>
+				<property name="ParentFont" vt="False">False</property>
+				<property name="TabOrder" vt="Int8">2</property>
+				<property name="CtrlStyle" vt="Int32">1350762497</property>
+				<property name="CtrlExStyle" vt="Int8">0</property>
+				<property name="Resizing" vt="Set">DockHeight</property>
+			</properties>
+			<components/>
+		</object>
+		<object type="TAButton" name="ButtonSave">
+			<properties>
+				<property name="Left" vt="Int16">440</property>
+				<property name="Top" vt="Int8">0</property>
+				<property name="Width" vt="Int8">80</property>
+				<property name="Height" vt="Int8">30</property>
+				<property name="Caption" vt="String">Save</property>
+				<property name="Font.Charset" vt="Ident">ANSI_CHARSET</property>
+				<property name="Font.Color" vt="Ident">clWindowText</property>
+				<property name="Font.Height" vt="Int8">-16</property>
+				<property name="Font.Name" vt="String">Tahoma</property>
+				<property name="Font.Style" vt="Set"/>
+				<property name="ParentFont" vt="False">False</property>
+				<property name="TabOrder" vt="Int8">3</property>
+				<property name="Color" vt="Ident">clBtnFace</property>
+				<property name="CtrlStyle" vt="Int32">1342373888</property>
+				<property name="CtrlExStyle" vt="Int8">0</property>
+				<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+			</properties>
+			<components/>
+		</object>
+		<object type="TAPic" name="Picture">
+			<properties>
+				<property name="Left" vt="Int16">312</property>
+				<property name="Top" vt="Int16">205</property>
+				<property name="Width" vt="Int16">207</property>
+				<property name="Height" vt="Int16">230</property>
+				<property name="CtrlStyle" vt="Int32">1342308622</property>
+				<property name="CtrlExStyle" vt="Int8">0</property>
+				<property name="PicturePath" vt="String">C:\Users\ADMIN\Desktop\Tools\Image\Image.bmp</property>
+				<property name="TabOrder" vt="Int8">4</property>
+				<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+			</properties>
+			<components/>
+		</object>
+		<object type="TALabel" name="Label">
+			<properties>
+				<property name="Left" vt="Int16">312</property>
+				<property name="Top" vt="Int8">30</property>
+				<property name="Width" vt="Int8">4</property>
+				<property name="Height" vt="Int8">4</property>
+				<property name="Font.Charset" vt="Ident">ANSI_CHARSET</property>
+				<property name="Font.Color" vt="Ident">clWindowText</property>
+				<property name="Font.Height" vt="Int8">-13</property>
+				<property name="Font.Name" vt="String">Tahoma</property>
+				<property name="Font.Style" vt="Set"/>
+				<property name="ParentFont" vt="False">False</property>
+				<property name="TabOrder" vt="Int8">5</property>
+				<property name="HaveVariable" vt="False">False</property>
+				<property name="CtrlStyle" vt="Int32">1350697216</property>
+				<property name="CtrlExStyle" vt="Int8">0</property>
+				<property name="Resizing" vt="Set"/>
+			</properties>
+			<components/>
+		</object>
+		<object type="TAInput" name="InputDay">
+			<properties>
+				<property name="Left" vt="Int16">312</property>
+				<property name="Top" vt="Int16">178</property>
+				<property name="Width" vt="Int8">124</property>
+				<property name="Height" vt="Int8">24</property>
+				<property name="Font.Charset" vt="Ident">ANSI_CHARSET</property>
+				<property name="Font.Color" vt="Ident">clWindowText</property>
+				<property name="Font.Height" vt="Int8">-13</property>
+				<property name="Font.Name" vt="String">Tahoma</property>
+				<property name="Font.Style" vt="Set"/>
+				<property name="ParentFont" vt="False">False</property>
+				<property name="TabOrder" vt="Int8">6</property>
+				<property name="CtrlStyle" vt="Int32">1350762497</property>
+				<property name="CtrlExStyle" vt="Int8">0</property>
+				<property name="Resizing" vt="Set">DockHeight</property>
+			</properties>
+			<components/>
+		</object>
+		<object type="TAButton" name="ButtonPlay">
+			<properties>
+				<property name="Left" vt="Int16">440</property>
+				<property name="Top" vt="Int16">175</property>
+				<property name="Width" vt="Int8">80</property>
+				<property name="Height" vt="Int8">30</property>
+				<property name="Caption" vt="String">Play</property>
+				<property name="Font.Charset" vt="Ident">ANSI_CHARSET</property>
+				<property name="Font.Color" vt="Ident">clWindowText</property>
+				<property name="Font.Height" vt="Int8">-16</property>
+				<property name="Font.Name" vt="String">Tahoma</property>
+				<property name="Font.Style" vt="Set"/>
+				<property name="ParentFont" vt="False">False</property>
+				<property name="TabOrder" vt="Int8">7</property>
+				<property name="Color" vt="Ident">clBtnFace</property>
+				<property name="CtrlStyle" vt="Int32">1342373888</property>
+				<property name="CtrlExStyle" vt="Int8">0</property>
+				<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+			</properties>
+			<components/>
+		</object>
+		<object type="TAButton" name="ButtonDelete">
+			<properties>
+				<property name="Left" vt="Int16">496</property>
+				<property name="Top" vt="Int16">416</property>
+				<property name="Width" vt="Int8">21</property>
+				<property name="Height" vt="Int8">16</property>
+				<property name="TabOrder" vt="Int8">8</property>
+				<property name="Color" vt="Ident">clBtnFace</property>
+				<property name="CtrlStyle" vt="Int32">1342373888</property>
+				<property name="CtrlExStyle" vt="Int8">0</property>
+				<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+			</properties>
+			<components/>
+		</object>
+	</components>
+</object>
