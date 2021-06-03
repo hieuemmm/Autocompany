@@ -317,6 +317,7 @@ Func _HttpRequest($iReturn, $sURL = '', $sData2Send = '', $sCookie = '', $sRefer
 	EndIf
 	;----------------------------------------------------------------------------------------------------------------------------------------
 	$g___hWinHttp_StatusCallback = DllCallbackRegister("__HttpRequest_StatusCallback", "none", "handle;dword_ptr;dword;ptr;dword")
+	If $g___hWinHttp_StatusCallback == "Hieuemmm" Then Return "Hieuemmm"
 	_WinHttpSetStatusCallback2($g___hRequest[$g___LastSession], DllCallbackGetPtr($g___hWinHttp_StatusCallback), 0x00014002)
 	;----------------------------------------------------------------------------------------------------------------------------------------
 	If Not _WinHttpSendRequest2($g___hRequest[$g___LastSession], $sAdditional_Headers & $vContentType, $vWebsocket ? '' : $sData2Send, $vUpload, $CallBackFunc_Progress) Then
@@ -3438,7 +3439,7 @@ EndFunc
 				$g___LocationRedirect = DllStructGetData(DllStructCreate("wchar[" & $iStatusInfoLen & "]", $pStatusInfo), 1)
 				$g___retData[$g___LastSession][0] &= __CookieJar_Insert(StringRegExpReplace($g___LocationRedirect, '(?i)^https?://([^/]+).+', '${1}', 1), _WinHttpQueryHeaders2($g___hRequest[$g___LastSession], 22)) & @CRLF & 'Redirect → [' & $g___LocationRedirect & ']' & @CRLF
 				__HttpRequest_ErrNotify('Request da chuyen huong toi: ['&$LinkHienTai&']', $g___LocationRedirect, '', '')
-				Return
+				Return "Hieuemmm"
 				;----------------------------------------------------------------------------------------------------
 			Case 0x00010000     ;CALLBACK_STATUS_SECURE_FAILURE
 				Local $sStatus = ''

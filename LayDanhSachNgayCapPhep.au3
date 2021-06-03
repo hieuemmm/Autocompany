@@ -1,3 +1,5 @@
+;Giá trị trả về : Một mảng ngày giữa ngày a và ngày b
+
 #include <Array.au3>
 #include <MsgBoxConstants.au3>
 #include <StringConstants.au3>
@@ -6,9 +8,7 @@ Global $NgayBatDauDanhSachNgayCapPhep = "01/01/2021"
 Global $NgayKetThucDanhSachNgayCapPhep = "31/12/2021"
 Global $MangNgayCapPhep[1] = [$NgayBatDauDanhSachNgayCapPhep]
 
-;RUNDANHSACHNGAYCAPPHEP()
-
-Func RUNDANHSACHNGAYCAPPHEP()
+Func LayDanhSachNgayCapPhep()
 	Local $NgayStart = StringSplit($NgayBatDauDanhSachNgayCapPhep,"/")
 	Global $MangNgayCapPhep[1] = [$NgayBatDauDanhSachNgayCapPhep]
 	TangMotNgay($NgayStart[1], $NgayStart[2], $NgayStart[3])
