@@ -1,1 +1,1 @@
-# Công tắc: ON ||
+# Công tắc đóng mở: ON ||
