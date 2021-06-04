@@ -1,1 +1,1 @@
-# Autocompany
+# Công tắc: ON ||
