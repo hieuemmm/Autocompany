@@ -1,4 +1,4 @@
-# Công tắc đóng mở: 1 ||
+# Công tắc đóng mở: 0 ||
 1. cỗng == 1 là mở
 2. cỗng == 0 là đóng
 ***
