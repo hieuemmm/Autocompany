@@ -1,1 +1,1 @@
-# Công tắc đóng mở: 0 ||
+# Công tắc đóng mở: 1 ||
