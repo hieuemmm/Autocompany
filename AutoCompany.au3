@@ -1,4 +1,8 @@
 ﻿#RequireAdmin
+#Region ;**** Directives created by AutoIt3Wrapper_GUI ****
+#AutoIt3Wrapper_Icon=Image\icon.ico
+#AutoIt3Wrapper_UseX64=n
+#EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 #include <ButtonConstants.au3>
 #include <EditConstants.au3>
@@ -12,11 +16,12 @@
 #include <Date.au3>
 #include <Sound.au3>
 
-#include <_HttpRequest.au3>
+#include <_HttpRequest_ChinhSua.au3>
 #include <CheckProxy.au3>
 #include <LayDanhSachNgayCapPhep.au3>
 #include <HandleImgSearch.au3>
 #include <ExcelCOM_UDF.au3>
+#include "Cached GIF Animation.au3"
 
 ;BIẾN TOÀN CỤC
 Global $iRun = True
@@ -33,25 +38,25 @@ Global $ItemProxy = 0
 Global $ItemProxyGia = Round(Random(0,50)) ; tăng lần đổi IP [Mang tính chất trang trí]
 
 #Region GIAO DIỆN
-$FormMain = GUICreate("AutoCompany", 521, 436, 192, 124)
+$FormMain = GUICreate("AutoCompany", 521, 436, 193, 124)
 $Handle = WinGetHandle("AutoCompany")
 GUISetIcon(@ScriptDir & "\Image\icon.ico", -1)
 GUISetBkColor(0xFFFFFF)
-$ListView1 = GUICtrlCreateListView("            DANH SÁCH           ", 0, 0, 154, 435)
+$ListDanhSach = GUICtrlCreateListView("           DANH SÁCH           ", 1, 0, 154, 435-150)
 GUICtrlSetCursor (-1, 0)
-$ListView2 = GUICtrlCreateListView("              ĐÃ CHỌN              ", 155, 0, 154, 435-150)
+$ListDaChon = GUICtrlCreateListView("              ĐÃ CHỌN              ", 156, 0, 154, 435-150)
 GUICtrlSetCursor (-1, 0)
 
-$InputDaTa = GUICtrlCreateInput("", 310, 1, 130, 28, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$WS_BORDER), 0)
+$InputDaTa = GUICtrlCreateInput("", 311, 1, 130, 28, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$WS_BORDER), 0)
 GUICtrlSetFont(-1, 10, 400, 0, "Tahoma")
-$ButtonSave = GUICtrlCreateButton("Save", 440, 0, 80, 30)
+$ButtonSave = GUICtrlCreateButton("Save", 441, 0, 80, 30)
 GUICtrlSetCursor (-1, 0)
 GUICtrlSetFont(-1, 12, 400, 0, "Tahoma")
-$Picture = GUICtrlCreatePic(@ScriptDir & "\Image\Image.bmp", 311, 413, 207, 22)
-$Label = GUICtrlCreateLabel("", 310, 30, 209, 145, $WS_BORDER)
+$PictureFB = GUICtrlCreatePic(@ScriptDir & "\Image\Image.bmp", 311, 413, 207, 22,BitOR($SS_NOTIFY,$WS_GROUP,$WS_CLIPSIBLINGS))
+$Label = GUICtrlCreateLabel("", 311, 30, 209, 145, $WS_BORDER)
 GUICtrlSetCursor (-1, 7)
 GUICtrlSetFont(-1, 10, 400, 0, "Tahoma")
-$ButtonPlay = GUICtrlCreateButton("Play", 440, 175, 80, 30)
+$ButtonPlay = GUICtrlCreateButton("Play", 441, 175, 80, 30)
 GUICtrlSetCursor (-1, 0)
 GUICtrlSetFont(-1, 12, 400, 0, "Tahoma")
 
@@ -60,39 +65,42 @@ $RadioMacDinh = GUICtrlCreateRadio("Mặc Đinh", 313, 208, 100, 17)
 GUICtrlSetCursor (-1, 0)
 GUICtrlSetState(-1, $GUI_CHECKED)
 $Label1 = GUICtrlCreateLabel("[Ngày Cấp Phép => Hiện Tại] :", 312+20, 246-19, 148, 17)
-$InputDay = GUICtrlCreateInput("", 312+20, 246, 128, 28, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$WS_BORDER), 0)
+$InputDay = GUICtrlCreateInput("", 312+20, 246, 128+50, 28, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$WS_BORDER), 0)
 GUICtrlSetFont(-1, 10, 400, 0, "Tahoma")
 
-$Label1 = GUICtrlCreateLabel("------------------------------------------------------------------------------------", 309, 208+70-1, 1000, 17)
+;$Label1 = GUICtrlCreateLabel("------------------------------------------------------------------------------------", 309, 208+70-1, 1000, 17)
 $RadioNangCao = GUICtrlCreateRadio("Nâng Cao", 313, 208+83, 100, 17)
 GUICtrlSetCursor (-1, 0)
 $Label1 = GUICtrlCreateLabel("Ngày Bắt Đầu :", 312+20, 208+83+17, 128, 17)
-$InputBD = GUICtrlCreateInput("", 312+20, 208+83+17+17, 124, 24, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$WS_BORDER), 0)
+$InputBD = GUICtrlCreateInput("", 312+20, 208+83+17+17, 124+50, 28, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$WS_BORDER), 0)
 GUICtrlSetFont(-1, 10, 400, 0, "Tahoma")
-$Label1 = GUICtrlCreateLabel("Ngày Kết Thúc :", 312+20, 208+83+17+17+24, 128, 17)
-$InputKT = GUICtrlCreateInput("", 312+20, 208+83+17+17+24+17, 124, 24, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$WS_BORDER), 0)
+$Label1 = GUICtrlCreateLabel("Ngày Kết Thúc :", 312+20, 208+83+17+17+24+6, 128, 17)
+$InputKT = GUICtrlCreateInput("", 312+20, 208+83+17+17+24+17+6, 124+50, 28, BitOR($GUI_SS_DEFAULT_INPUT,$ES_CENTER,$WS_BORDER), 0)
 GUICtrlSetFont(-1, 10, 400, 0, "Tahoma")
 
-$PictureRobot = GUICtrlCreatePic(@ScriptDir & "\Image\RoBotXanh.bmp", 155, 280-2, 154, 157,BitOR($SS_NOTIFY,$WS_GROUP,$WS_CLIPSIBLINGS,$WS_BORDER))
+;$PictureRobot1 = GUICtrlCreatePic(@ScriptDir & "\Image\Robot1.png", 155, 290, 154, 157,BitOR($SS_NOTIFY,$WS_GROUP,$WS_CLIPSIBLINGS,$WS_BORDER))
+$PictureRobot = _GUICtrlCreateAnimGIF(@ScriptDir & "\Image\Group.gif", 3, 290, 306, 150, -1,$GUI_WS_EX_PARENTDRAG)
 GUICtrlSetCursor (-1, 0)
 ;GIẢ LẬP SỰ KIỆN DOUBLE CLICK
-$DoubeClickListView1 = GUICtrlCreateDummy()
-$DoubeClickListView2 = GUICtrlCreateDummy()
+$DoubeClickListDanhSach = GUICtrlCreateDummy()
+$DoubeClickListDaChon = GUICtrlCreateDummy()
 GUIRegisterMsg($WM_NOTIFY, 'WM_NOTIFY')
 ;SET HOTKEY
 HotKeySet("^s","SaveConfig")
 HotKeySet("^d","SetDataInPut")
+HotKeySet("^m","CallRobot")
 HotKeySet("^{BS}","DeleteListView")
 HotKeySet("^{SPACE}","ExcelFile")
-HotKeySet("{F5}","RUNNING")
-HotKeySet('{F6}', 'HideGUI')
+HotKeySet("{F5}","ON_OFF_PROGRAM")
+HotKeySet('{F6}','HiddenGUI')
+HotKeySet('{BREAK}','Exits')
 ;LOADING MẶC ĐỊNH
 GUICtrlSetState ($InputBD, $GUI_DISABLE)
 GUICtrlSetState ($InputKT, $GUI_DISABLE)
 GUICtrlSetState ($InputDay, $GUI_ENABLE)
 LoadKey()
 GUICtrlSetData($InputDay,@MDAY&"/"&@MON&"/"&@YEAR)
-GUICtrlSetData($InputBD,@MDAY&"/"&@MON&"/"&@YEAR)
+GUICtrlSetData($InputBD,@MDAY&"/"&@MON&"/"&@YEAR-1)
 GUICtrlSetData($InputKT,@MDAY&"/"&@MON&"/"&@YEAR)
 
 GUISetState(@SW_SHOW)
@@ -101,76 +109,56 @@ GUISetState(@SW_SHOW)
 #Region BẮT SỰ KIỆN GUI
 	While True
 		Switch GUIGetMsg()
-			Case $DoubeClickListView1
-				;XuLyDoubelCLickListView1()
-				Local $DataListView1 = StringMid(GUICtrlRead(GUICtrlRead($ListView1)),1,StringLen(GUICtrlRead(GUICtrlRead($ListView1)))-1)
-				GUICtrlCreateListViewItem($DataListView1,$ListView2)
-				_GUICtrlListView_DeleteItemsSelected ($ListView1)
-				GUICtrlSetData ($Label,"")
-			Case $DoubeClickListView2
-				;XuLyDoubelCLickListView2()
-				Local $DataListView2 = StringMid(GUICtrlRead(GUICtrlRead($ListView2)),1,StringLen(GUICtrlRead(GUICtrlRead($ListView2)))-1)
-				GUICtrlCreateListViewItem($DataListView2,$ListView1)
-				_GUICtrlListView_DeleteItemsSelected ($ListView2)
-				GUICtrlSetData ($Label,"")
+			Case $DoubeClickListDanhSach
+				DoubelCLickListDanhSach()
+			Case $DoubeClickListDaChon
+				DoubelCLickListDachon()
 			Case $ButtonSave
 				SaveConfig()
 			Case $PictureRobot
-					Local $pos = WinGetPos($Handle)
-					If $iM Then
-						ToolTip(FileRead(@ScriptDir &"\Data\ThongTinPhanMem.md"),$pos[0]+$pos[2],$pos[1])
-
-						$iM = False
-					Else
-						$iM = True
-						ToolTip("")
+				CallRobot()
+			Case $PictureFB
+					_SoundPlay(@ScriptDir & "\Data\CapNhatProXy.mp3",0)
+					If (MsgBox(36,"Cập nhât Proxy IP mới nhất","Bạn muốn cập nhật không?",10)==6) Then
+						Local $pos = WinGetPos($Handle)
+						ToolTip("Để sử dụng chức năng nâng cao"&@CRLF&"1 tuần nên làm mới nó một lần nhé"&@CRLF&"Đang cập nhật IP mới nhất..." & @CRLF & " Xong sẽ tự tắt",$pos[0]+$pos[2],$pos[1])
+						CheckProxy(True)
+						ToolTip("",0,0)
 					EndIf
 			Case $ButtonPlay
-				If GUICtrlRead($RadioMacDinh) = 1 Then
-					If StringLen(GUICtrlRead($InputDay)) = 10 Then
-						RUNNING()
-						_SoundPlay(@ScriptDir & "\TienTrinhHoanTat.mp3",1)
-					Else
-						GUICtrlSetData ($Label,@CRLF &"  Vui lòng điền ngày" & @CRLF & "  Đúng định dạng: dd/mm/yyyy"& @CRLF & "  Ví dụ: 05/05/2020"& @CRLF &"  Để lấy kết quả từ ngày đó đến "& @CRLF &"  ngày hiện tại")
-					EndIf
-				Else
-					If StringLen(GUICtrlRead($InputBD)) = 10 And StringLen(GUICtrlRead($InputKT)) = 10 Then
-						Global $NgayBatDauDanhSachNgayCapPhep = GUICtrlRead($InputBD)
-						Global $NgayKetThucDanhSachNgayCapPhep = GUICtrlRead($InputKT)
-						RUNNINGNANGCAO()
-						_SoundPlay(@ScriptDir & "\TienTrinhHoanTat.mp3",1)
-					Else
-						GUICtrlSetData ($Label,@CRLF &"  Vui lòng điền đủ hai trường" & @CRLF & "  Đúng định dạng: dd/mm/yyyy"& @CRLF & "  Ví dụ: "& @CRLF &"  Bắt đầu :05/05/2020"& @CRLF & "  Kết thúc :05/05/2021"& @CRLF &"  Để lấy kết quả của 365 ngày")
-					EndIf
-				EndIf
-			Case $RadioMacDinh
-				If GUICtrlRead($RadioMacDinh) = 1 Then
-					GUICtrlSetState ($InputBD, $GUI_DISABLE)
-					GUICtrlSetState ($InputKT, $GUI_DISABLE)
-					GUICtrlSetState ($InputDay, $GUI_ENABLE)
-				Else
-					GUICtrlSetState ($InputBD, $GUI_ENABLE)
-					GUICtrlSetState ($InputKT, $GUI_ENABLE)
-					GUICtrlSetState ($InputDay, $GUI_DISABLE)
-				EndIf
-			Case $RadioNangCao
-				If GUICtrlRead($RadioMacDinh) = 1 Then
-					GUICtrlSetState ($InputBD, $GUI_DISABLE)
-					GUICtrlSetState ($InputKT, $GUI_DISABLE)
-					GUICtrlSetState ($InputDay, $GUI_ENABLE)
-				Else
-					GUICtrlSetState ($InputBD, $GUI_ENABLE)
-					GUICtrlSetState ($InputKT, $GUI_ENABLE)
-					GUICtrlSetState ($InputDay, $GUI_DISABLE)
-				EndIf
+				ON_OFF_PROGRAM()
+			Case $RadioMacDinh, $RadioNangCao
+				RadioChecked()
 			Case $GUI_EVENT_CLOSE
-				Exit
+				Exits()
 		EndSwitch
 	WEnd
 #EndRegion
 #Region FUNCTION MAIN
 Func ON_OFF_PROGRAM()
-
+	If $iRun Then
+		If GUICtrlRead($RadioMacDinh) = 1 Then
+			If StringLen(GUICtrlRead($InputDay)) = 10 Then
+				RUNNING()
+				_SoundPlay(@ScriptDir & "\Data\TienTrinhHoanTat.mp3",0)
+			Else
+				GUICtrlSetData ($Label,@CRLF &"  Vui lòng điền ngày" & @CRLF & "  Đúng định dạng: dd/mm/yyyy"& @CRLF & "  Ví dụ: 05/05/2020"& @CRLF &"  Để lấy kết quả từ ngày đó đến "& @CRLF &"  ngày hiện tại")
+			EndIf
+		Else
+			If StringLen(GUICtrlRead($InputBD)) = 10 And StringLen(GUICtrlRead($InputKT)) = 10 Then
+				Global $NgayBatDauDanhSachNgayCapPhep = GUICtrlRead($InputBD)
+				Global $NgayKetThucDanhSachNgayCapPhep = GUICtrlRead($InputKT)
+				RUNNINGNANGCAO()
+				_SoundPlay(@ScriptDir & "\Data\TienTrinhHoanTat.mp3",1)
+			Else
+				GUICtrlSetData ($Label,@CRLF &"  Vui lòng điền đủ hai trường" & @CRLF & "  Đúng định dạng: dd/mm/yyyy"& @CRLF & "  Ví dụ: "& @CRLF &"  Bắt đầu :05/05/2020"& @CRLF & "  Kết thúc :05/05/2021"& @CRLF &"  Để lấy kết quả của 365 ngày")
+			EndIf
+		EndIf
+	Else
+		__HttpRequest_CancelReadWrite()
+		$iRun = Not($iRun)
+		GUICtrlSetData($ButtonPlay,"Stop")
+	EndIf
 EndFunc
 Func RUNNING();lấy một trang
 	if $iRun Then
@@ -179,13 +167,13 @@ Func RUNNING();lấy một trang
 		Local $LenthDay = _DateDiff ( "D", DaoNguocNgay(GUICtrlRead($InputDay)), @YEAR&"/"&@MON&"/"&@MDAY)
 		Local $Key
 		Local $String,$DanhsachCongTy
-		$list_count = _GUICtrlListView_GetItemCount ($ListView2)
+		$list_count = _GUICtrlListView_GetItemCount ($ListDaChon)
 		If $list_count < 1 Then
 			GUICtrlSetData ($Label,@CRLF &"  Vui lòng chọn !!!")
 		Else
 			For $i=0 To $list_count-1
-				_GUICtrlListView_SetItemSelected($ListView2,$i)
-				$Read = GUICtrlRead(GUICtrlRead($ListView2))
+				_GUICtrlListView_SetItemSelected($ListDaChon,$i)
+				$Read = GUICtrlRead(GUICtrlRead($ListDaChon))
 				$String &= $Read
 			Next
 			$Key = StringSplit($String,"|")
@@ -229,13 +217,13 @@ Func RUNNINGNANGCAO();Lấy tất cả
 		GUICtrlSetData($ButtonPlay,"Stop")
 		$iRun = False
 		Local $Key, $String, $DanhsachCongTy
-		$list_count = _GUICtrlListView_GetItemCount ($ListView2)
+		$list_count = _GUICtrlListView_GetItemCount ($ListDaChon)
 		If $list_count < 1 Then
 			GUICtrlSetData ($Label,@CRLF &"  Vui lòng chọn !!!")
 		Else
 			For $i=0 To $list_count-1
-				_GUICtrlListView_SetItemSelected($ListView2,$i)
-				$Read = GUICtrlRead(GUICtrlRead($ListView2))
+				_GUICtrlListView_SetItemSelected($ListDaChon,$i)
+				$Read = GUICtrlRead(GUICtrlRead($ListDaChon))
 				$String &= $Read
 			Next
 			$Key = StringSplit($String,"|")
@@ -267,8 +255,6 @@ Func RUNNINGNANGCAO();Lấy tất cả
 					Local $KetQua[1][6]
 					CreateExcel($Key[$i],$KetQua,$key,$i,$j)
 				EndIf
-				MsgBox(0,'',"sắp hiển thị mảng")
-				_ArrayDisplay($KetQua)
 			Next
 			If GUICtrlRead($RadioMacDinh) = 1 Then
 				GUICtrlSetData ($Label,@CRLF &"  Tiến trình đã hoàn tất !!!")
@@ -320,14 +306,14 @@ Func LayThongTinCongTy($Link,$NangCao = False)
 		_ArrayInsert($ThongTin, 0, $TenCongTy[0])
 	Else
 		_ArrayInsert($ThongTin, 0, " ")
-		_HttpRequest_ConsoleWrite("Không tồn tại $TenCongTy : "& $Link)
+		_HttpRequest_ConsoleWrite("Khong ton tai $TenCongTy : "& $Link & @CRLF)
 	EndIf ;OK
 
 	If IsArray($MaSoThue) Then
 		_ArrayInsert($ThongTin, 1, $MaSoThue[0])
 	Else
 		_ArrayInsert($ThongTin, 1, " ")
-		_HttpRequest_ConsoleWrite("Không tồn tại $MaSoThue : "& $Link)
+		_HttpRequest_ConsoleWrite("Khong ton tai $MaSoThue : "& $Link & @CRLF)
 	EndIf ;OK
 
 	_ArrayInsert($ThongTin, 2, $DiaChi) ;OK
@@ -336,7 +322,7 @@ Func LayThongTinCongTy($Link,$NangCao = False)
 		_ArrayInsert($ThongTin, 3, $DaiDienPhapLuat[0])
 	Else
 		_ArrayInsert($ThongTin, 3, " ")
-		_HttpRequest_ConsoleWrite("Không tồn tại $DaiDienPhapLuat : "& $Link)
+		_HttpRequest_ConsoleWrite("Khong ton tai $DaiDienPhapLuat : "& $Link & @CRLF)
 	EndIf;OK
 	If IsArray($LinkSoDienThoai) Then
 		If StringLen($LinkSoDienThoai[0]) > 200 Then
@@ -344,11 +330,11 @@ Func LayThongTinCongTy($Link,$NangCao = False)
 			$SoDienThoai = GiaiCapCha("SDT")
 		Else
 			$SoDienThoai = " "
-			_HttpRequest_ConsoleWrite("Loi Sai Link $SoDienThoai : "& $Link)
+			_HttpRequest_ConsoleWrite("Loi Sai Link $SoDienThoai : "& $Link & @CRLF)
 		EndIf
 	Else
 		$SoDienThoai = " "
-		_HttpRequest_ConsoleWrite("Không tồn tại $SoDienThoai : "& $Link)
+		_HttpRequest_ConsoleWrite("Khong ton tai $SoDienThoai : "& $Link & @CRLF)
 	EndIf
 	_ArrayInsert($ThongTin, 4, $SoDienThoai);OK
 
@@ -356,7 +342,7 @@ Func LayThongTinCongTy($Link,$NangCao = False)
 		_ArrayInsert($ThongTin, 5, $NgayCapPhep[0])
 	Else
 		_ArrayInsert($ThongTin, 5, " ")
-		_HttpRequest_ConsoleWrite("Không tồn tại $NgayCapPhep : "& $Link)
+		_HttpRequest_ConsoleWrite("Khong ton tai $NgayCapPhep : "& $Link & @CRLF)
 	EndIf
 	Return $ThongTin
 EndFunc
@@ -366,6 +352,7 @@ Func LayDanhSachCongTyNangCao($Link)
 	Local $Lenth, $MangKetquaDSCompany, $MaNguonTrang, $LinkCompany, $LinkPage
 	;Xử lý lấy phần $MaxPage
 	$MaNguonTrang = GetHTMLNangCao($Link)
+	_SoundPlay(@ScriptDir & "\Data\ChayNangCao.mp3",1)
 	$LinkCompany = StringRegExp($MaNguonTrang,'href="(.*?)"',3)
 	$LinkPage = $LinkCompany ; Nhân đôi mảng request được
 	For $k = UBound($LinkPage) -1 to 0 Step -1 ; xóa các phần tử != chuỗi
@@ -497,7 +484,7 @@ Func GetHTMLNangCao($Link)
 	_HttpRequest_ReduceMem() ;giảm tài nguyên hệ thống
 	While True
 		$SourceHTML = _HttpRequest(2, $Link)
-		If CheckBlock($SourceHTML) Then
+		If CheckBlock($SourceHTML) Or ($SourceHTML =="Hieuemmm") Then
 			While Not(_HttpRequest_CheckProxyLive($PROXY_LIST[$ItemProxy][0]&":"&$PROXY_LIST[$ItemProxy][1]))
 				$ItemProxy+=1
 			WEnd
@@ -513,11 +500,11 @@ EndFunc
 #Region FUNCTION
 Func DeleteListView()
 	If $iRun Then
-	Local $DataListView1 = StringMid(GUICtrlRead(GUICtrlRead($ListView1)),1,StringLen(GUICtrlRead(GUICtrlRead($ListView1)))-1)
+	Local $DataListDanhSach = StringMid(GUICtrlRead(GUICtrlRead($ListDanhSach)),1,StringLen(GUICtrlRead(GUICtrlRead($ListDanhSach)))-1)
 	Local $DataKey = FileReadToArray(@ScriptDir & "\Data\Key.txt")
 	Local $Lenth = UBound($DataKey)-1
 	For $i = $Lenth to 0 step -1
-		If $DataKey[$i] == $DataListView1 Then
+		If $DataKey[$i] == $DataListDanhSach Then
 			_ArrayDelete($DataKey, $i)
 		EndIf
 	Next
@@ -527,9 +514,9 @@ Func DeleteListView()
 		$String &= $DataKey[$i] & @CRLF
 	Next
 	FileWrite(FileOpen(@ScriptDir & "\Data\Key.txt",2),$String)
-	IniDelete(@ScriptDir & "\Data\Config.ini","Data",$DataListView1)
+	IniDelete(@ScriptDir & "\Data\Config.ini","Data",$DataListDanhSach)
 	LoadKey()
-	GUICtrlSetData ($Label,@CRLF &"  Đã xóa ["&$DataListView1&"]")
+	GUICtrlSetData ($Label,@CRLF &"  Đã xóa ["&$DataListDanhSach&"]")
 	EndIf
 EndFunc
 Func WM_NOTIFY($hWnd, $MsgID, $wParam, $lParam)
@@ -538,28 +525,28 @@ Func WM_NOTIFY($hWnd, $MsgID, $wParam, $lParam)
 	If @error Then Return 0
 	$iCode = DllStructGetData($stNMHDR, 'Code')
 	Switch $wParam
-		Case $ListView1
+		Case $ListDanhSach
 			Switch $iCode
 				Case $NM_DBLCLK
 					$bDblClck_Event = True
-					GUICtrlSendToDummy($DoubeClickListView1) ; double
+					GUICtrlSendToDummy($DoubeClickListDanhSach) ; double
 			EndSwitch
-		Case $ListView2
+		Case $ListDaChon
 			Switch $iCode
 				Case $NM_DBLCLK
 					$bDblClck_Event = True
-					GUICtrlSendToDummy($DoubeClickListView2) ; double
+					GUICtrlSendToDummy($DoubeClickListDaChon) ; double
 			EndSwitch
 	EndSwitch
 	Return $GUI_RUNDEFMSG
 EndFunc
 Func LoadKey()
-	_GUICtrlListView_DeleteAllItems($ListView1)
-	_GUICtrlListView_DeleteAllItems($ListView2)
+	_GUICtrlListView_DeleteAllItems($ListDanhSach)
+	_GUICtrlListView_DeleteAllItems($ListDaChon)
 	Local $String = FileReadToArray(@ScriptDir & "\Data\Key.txt")
 	Local $Lenth = UBound($String)-1
 	For $i = 0 to $Lenth
-		GUICtrlCreateListViewItem($String[$i],$ListView1)
+		GUICtrlCreateListViewItem($String[$i],$ListDanhSach)
 	Next
 EndFunc
 Func SetDataInPut()
@@ -608,7 +595,7 @@ Func ThongBao($Ketthuc = 0)
 		GUICtrlSetData ($Label,"  LẦN ĐỔI IP : " & $ItemProxyGia & @CRLF & "  Lần Requet : " & $DemSoLanRequets & @CRLF &"  Công ty đã yêu cầu : " & $DemSoCompanyRequets & "/" & $MaxPage*50 & @CRLF & "  Đã Copied : " & $DemSoCompanyCopied & @CRLF & "  Đã Lưu vào Excel : " & $DemSoCompanyLuuExcel)
 	EndIf
 EndFunc
-Func HideGUI()
+Func HiddenGUI()
 	 If $show = 1 Then
         WinSetState($FormMain, '', @SW_HIDE)
         $show = 0
@@ -616,5 +603,47 @@ Func HideGUI()
         WinSetState($FormMain, '', @SW_SHOW )
         $show = 1
     EndIf
+EndFunc
+Func CallRobot()
+	Local $pos = WinGetPos($Handle)
+	If $iM Then
+		ToolTip(FileRead(@ScriptDir &"\Data\ThongTinPhanMem.md"),$pos[0]+$pos[2],$pos[1])
+		$iM = False
+	Else
+		$iM = True
+		ToolTip("")
+	EndIf
+EndFunc
+Func DoubelCLickListDanhSach()
+	Local $DataListDanhSach = StringMid(GUICtrlRead(GUICtrlRead($ListDanhSach)),1,StringLen(GUICtrlRead(GUICtrlRead($ListDanhSach)))-1)
+	If StringLen($DataListDanhSach) > 3 Then
+		GUICtrlCreateListViewItem($DataListDanhSach,$ListDaChon)
+		_GUICtrlListView_DeleteItemsSelected ($ListDanhSach)
+		GUICtrlSetData ($Label,"")
+		_GUICtrlListView_SetItemSelected($ListDaChon, _GUICtrlListView_GetItemCount ($ListDaChon)-1)
+	EndIf
+EndFunc
+Func DoubelCLickListDachon()
+	Local $DataListDaChon = StringMid(GUICtrlRead(GUICtrlRead($ListDaChon)),1,StringLen(GUICtrlRead(GUICtrlRead($ListDaChon)))-1)
+	If StringLen($DataListDaChon) > 3 Then
+		GUICtrlCreateListViewItem($DataListDaChon,$ListDanhSach)
+		_GUICtrlListView_DeleteItemsSelected ($ListDaChon)
+		GUICtrlSetData ($Label,"")
+		_GUICtrlListView_SetItemSelected($ListDanhSach, _GUICtrlListView_GetItemCount ($ListDanhSach)-1)
+	EndIf
+EndFunc
+Func RadioChecked()
+	If GUICtrlRead($RadioMacDinh) = 1 Then
+		GUICtrlSetState ($InputBD, $GUI_DISABLE)
+		GUICtrlSetState ($InputKT, $GUI_DISABLE)
+		GUICtrlSetState ($InputDay, $GUI_ENABLE)
+	Else
+		GUICtrlSetState ($InputBD, $GUI_ENABLE)
+		GUICtrlSetState ($InputKT, $GUI_ENABLE)
+		GUICtrlSetState ($InputDay, $GUI_DISABLE)
+	EndIf
+EndFunc
+Func Exits()
+	Exit
 EndFunc
 #EndRegion
