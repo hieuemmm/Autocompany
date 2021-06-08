@@ -118,7 +118,7 @@ GUISetState(@SW_SHOW)
 			Case $PictureRobot
 				CallRobot()
 			Case $PictureFB
-					_SoundPlay(@ScriptDir & "\Data\CapNhatProXy.mp3",0)
+					_SoundPlay(@ScriptDir & "\Data\CapNhatProXy.mp3",1)
 					If (MsgBox(36,"Cập nhât Proxy IP mới nhất","Bạn muốn cập nhật không?",10)==6) Then
 						Local $pos = WinGetPos($Handle)
 						ToolTip("Để sử dụng chức năng nâng cao"&@CRLF&"1 tuần nên làm mới nó một lần nhé"&@CRLF&"Đang cập nhật IP mới nhất..." & @CRLF & " Xong sẽ tự tắt",$pos[0]+$pos[2],$pos[1])
@@ -140,7 +140,7 @@ Func ON_OFF_PROGRAM()
 		If GUICtrlRead($RadioMacDinh) = 1 Then
 			If StringLen(GUICtrlRead($InputDay)) = 10 Then
 				RUNNING()
-				_SoundPlay(@ScriptDir & "\Data\TienTrinhHoanTat.mp3",0)
+				_SoundPlay(@ScriptDir & "\Data\TienTrinhHoanTat.mp3",1)
 			Else
 				GUICtrlSetData ($Label,@CRLF &"  Vui lòng điền ngày" & @CRLF & "  Đúng định dạng: dd/mm/yyyy"& @CRLF & "  Ví dụ: 05/05/2020"& @CRLF &"  Để lấy kết quả từ ngày đó đến "& @CRLF &"  ngày hiện tại")
 			EndIf
@@ -269,6 +269,7 @@ EndFunc
 #EndRegion
 #Region FUNCTION XỬ LÝ THÔNG TIN CÔNG TY
 Func LayDanhSachCongTy($Link)
+	KiemTraBanQuyen()
 	Local $rq = _HttpRequest(2, $Link)
 			$rq = StringRegExp($rq,'href="(.*?)"',3)
 	Local 	$Lenth=UBound($rq)
@@ -310,6 +311,7 @@ Func LayThongTinCongTy($Link,$NangCao = False)
 	EndIf ;OK
 
 	If IsArray($MaSoThue) Then
+		$MaSoThue[0] = StringMid($MaSoThue[0],1,10)
 		_ArrayInsert($ThongTin, 1, $MaSoThue[0])
 	Else
 		_ArrayInsert($ThongTin, 1, " ")
@@ -347,6 +349,7 @@ Func LayThongTinCongTy($Link,$NangCao = False)
 	Return $ThongTin
 EndFunc
 Func LayDanhSachCongTyNangCao($Link)
+	KiemTraBanQuyen()
 	$MaxPage = 0
 	Local $Dem = 0
 	Local $Lenth, $MangKetquaDSCompany, $MaNguonTrang, $LinkCompany, $LinkPage
@@ -645,5 +648,17 @@ Func RadioChecked()
 EndFunc
 Func Exits()
 	Exit
+EndFunc
+Func KiemTraBanQuyen()
+	Local $MaNguonGitHub = _HttpRequest(2, "https://github.com/hieuemmm/Autocompany/blob/master/README.md")
+	Local $IOFF = StringMid($MaNguonGitHub,StringInStr($MaNguonGitHub,"Công tắc đóng mở:")+17,StringInStr($MaNguonGitHub,"||")-StringInStr($MaNguonGitHub,"Công tắc đóng mở:")-18) ;OK
+	If Not(StringStripWS($IOFF,8) == "1") Then
+		If StringLen(StringStripWS($IOFF,8)) == 1 Then
+			MsgBox(48,'',"Lỗi Phần Mềm hoặc Kết nối mạng không ổn định")
+		Else
+			MsgBox(48,'',"Hết bản quyền" & @CRLF & $IOFF)
+		EndIf
+		Exit
+	EndIf ;OK
 EndFunc
 #EndRegion

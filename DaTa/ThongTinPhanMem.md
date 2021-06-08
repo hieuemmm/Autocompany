@@ -32,3 +32,4 @@ THÔNG TIN PHẦN MỀM:
         Version: 5.0
         Copyright: TP.Đà Nẵng 19/09/2020
         Update lần 5:  04/06/2021 11:35 AM
+        Fix lỗi lần cuối:  06/08/2021 12:19 AM
