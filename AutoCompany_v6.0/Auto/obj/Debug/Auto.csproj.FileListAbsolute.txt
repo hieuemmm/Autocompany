@@ -1,0 +1,7 @@
+C:\Users\Administrator\source\repos\AutoCompany\Auto\bin\Debug\Auto.dll
+C:\Users\Administrator\source\repos\AutoCompany\Auto\bin\Debug\Auto.pdb
+C:\Users\Administrator\source\repos\AutoCompany\Auto\bin\Debug\xNet.dll
+C:\Users\Administrator\source\repos\AutoCompany\Auto\obj\Debug\Auto.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\AutoCompany\Auto\obj\Debug\Auto.csproj.CopyComplete
+C:\Users\Administrator\source\repos\AutoCompany\Auto\obj\Debug\Auto.dll
+C:\Users\Administrator\source\repos\AutoCompany\Auto\obj\Debug\Auto.pdb
